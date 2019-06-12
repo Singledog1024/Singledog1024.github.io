@@ -141,6 +141,94 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-06-12T05:41:42.000Z">2019-06-12</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 minutes read (About 533 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/06/12/Demo01/">设计模式-装饰模式</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="装饰设计模式"><a href="#装饰设计模式" class="headerlink" title="装饰设计模式"></a>装饰设计模式</h1><ul>
+<li><p>概念:</p>
+<ul>
+<li>装饰模式就是使用装饰类的一个子类的实例, 在客户端将这个子类的实例交给装饰类. 是继承的替换方案.</li>
+</ul>
+</li>
+<li><p>优点:</p>
+<ul>
+<li>使用装饰模式. 可以提供比 <strong>继承</strong> 更灵活的扩展对象, 它可以动态的添加对象的功能, 并且可以随意的组合这些功能</li>
+</ul>
+</li>
+<li><p>缺点:</p>
+<ul>
+<li>正因为可以随意组合, 所以就可能出现一些 <strong>不合理的逻辑</strong>.</li>
+</ul>
+</li>
+<li><p>示例图<br><img src="media/15510324685184/15511081668664.jpg" alt></p>
+</li>
+<li><p>手机模型</p>
+</li>
+</ul>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Phone</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> <span class="hljs-title">call</span><span class="hljs-params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>具体的手机</li>
+</ul>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">IPhone</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Phone</span> </span>&#123;</span><br><span class="line">    <span class="hljs-meta">@Override</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">call</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="hljs-string">"手机可以打电话了"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>装饰的抽象类</li>
+</ul>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PhoneDecorate</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Phone</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">private</span> Phone p;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">PhoneDecorate</span><span class="hljs-params">(Phone p)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">this</span>.p = p;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-meta">@Override</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">call</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">this</span>.p.call();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>音乐装饰类</li>
+</ul>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MusicePhoneDecorate</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">PhoneDecorate</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">MusicePhoneDecorate</span><span class="hljs-params">(Phone p)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">super</span>(p);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-meta">@Override</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">call</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">super</span>.call();</span><br><span class="line">        System.out.println(<span class="hljs-string">"手机可以听音乐了"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>彩铃装饰类</li>
+</ul>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RingPhoneDecorate</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">PhoneDecorate</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">RingPhoneDecorate</span><span class="hljs-params">(Phone p)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">super</span>(p);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-meta">@Override</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">call</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="hljs-string">"手机可以听彩铃!"</span>);</span><br><span class="line">        <span class="hljs-keyword">super</span>.call();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>测试类</li>
+</ul>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> java.io.*;</span><br><span class="line"><span class="hljs-keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PhoneDemo</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Phone p = <span class="hljs-keyword">new</span> IPhone();</span><br><span class="line">        p.call();</span><br><span class="line">        System.out.println(<span class="hljs-string">"------------"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">// 需求:我想在接电话前接彩铃</span></span><br><span class="line">        PhoneDecorate pd = <span class="hljs-keyword">new</span> RingPhoneDecorate(p);</span><br><span class="line">        pd.call();</span><br><span class="line">        System.out.println(<span class="hljs-string">"------------"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">// 需求:我想在接电话后听音乐</span></span><br><span class="line">        pd = <span class="hljs-keyword">new</span> MusicePhoneDecorate(p);</span><br><span class="line">        pd.call();</span><br><span class="line">        System.out.println(<span class="hljs-string">"------------"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">// 需求:我要想手机在接前听彩铃,接后听电话</span></span><br><span class="line">        <span class="hljs-comment">// 自己提供装饰类,再打电话前听彩铃,打电话后听音乐</span></span><br><span class="line">        pd = <span class="hljs-keyword">new</span> RingPhoneDecorate(<span class="hljs-keyword">new</span> MusicePhoneDecorate(p));</span><br><span class="line">        pd.call();</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="hljs-string">"------------"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">// 想想我们在IO流中的使用</span></span><br><span class="line">        <span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">        InputStream is = System.in; // 字节流</span></span><br><span class="line"><span class="hljs-comment">        InputStreamReader isr = new InputStreamReader(is); // 字符流 每次只能读取一个</span></span><br><span class="line"><span class="hljs-comment">        BufferedReader br = new BufferedReader(isr); // 高效系列</span></span><br><span class="line"><span class="hljs-comment">        */</span></span><br><span class="line">        <span class="hljs-comment">// 装饰二次</span></span><br><span class="line">        BufferedReader br = <span class="hljs-keyword">new</span> BufferedReader(<span class="hljs-keyword">new</span> InputStreamReader(System.in));</span><br><span class="line">        BufferedWriter bw = <span class="hljs-keyword">new</span> BufferedWriter(<span class="hljs-keyword">new</span> OutputStreamWriter(System.out));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">// 装饰一次</span></span><br><span class="line">        Scanner sc = <span class="hljs-keyword">new</span> Scanner(System.in);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">    在java9.0.4输出结果是：</span></span><br><span class="line"><span class="hljs-comment">                        手机可以打电话了</span></span><br><span class="line"><span class="hljs-comment">                        ------------</span></span><br><span class="line"><span class="hljs-comment">                        手机可以听彩铃!</span></span><br><span class="line"><span class="hljs-comment">                        手机可以打电话了</span></span><br><span class="line"><span class="hljs-comment">                        ------------</span></span><br><span class="line"><span class="hljs-comment">                        手机可以打电话了</span></span><br><span class="line"><span class="hljs-comment">                        手机可以听音乐了</span></span><br><span class="line"><span class="hljs-comment">                        ------------</span></span><br><span class="line"><span class="hljs-comment">                        手机可以听彩铃!</span></span><br><span class="line"><span class="hljs-comment">                        手机可以打电话了</span></span><br><span class="line"><span class="hljs-comment">                        手机可以听音乐了</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br></pre></td></tr></table></figure>
+
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-06-09T18:18:43.147Z">2019-06-10</time>
                 
                 
@@ -228,37 +316,37 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Entrada
+                        Articles
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        2
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Catégories
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        0
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Tag
                     </p>
                     <p class="title has-text-weight-normal">
                         1
                     </p>
                 </div>
             </div>
-            <div class="level-item has-text-centered is-marginless">
-                <div>
-                    <p class="heading">
-                        Categorias
-                    </p>
-                    <p class="title has-text-weight-normal">
-                        0
-                    </p>
-                </div>
-            </div>
-            <div class="level-item has-text-centered is-marginless">
-                <div>
-                    <p class="heading">
-                        Etiquetas
-                    </p>
-                    <p class="title has-text-weight-normal">
-                        0
-                    </p>
-                </div>
-            </div>
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/ppoffice" target="_blank">
-                SEGUIR</a>
+                SUIVRE</a>
         </div>
         
         
@@ -307,7 +395,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Links
+            Liens
         </h3>
         <ul class="menu-list">
         
@@ -345,7 +433,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categorias
+                Catégories
             </h3>
             <ul class="menu-list">
             
@@ -355,6 +443,15 @@
 </div>
     
         
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Nuage de tags
+        </h3>
+        <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+    </div>
+</div>
+
     
     
         <div class="column-right-shadow is-hidden-widescreen ">
@@ -363,8 +460,27 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recientes
+            Récents
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/06/12/Demo01/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="设计模式-装饰模式">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-12T05:41:42.000Z">2019-06-12</time></div>
+                    <a href="/2019/06/12/Demo01/" class="has-link-black-ter is-size-6">设计模式-装饰模式</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -393,7 +509,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archivos
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -403,7 +519,7 @@
                     <span class="level-item">June 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -417,9 +533,16 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Etiquetas
+                Tags
             </h3>
             <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/设计模式/">
+                        <span class="tag">设计模式</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
                 
             </div>
         </div>
@@ -441,8 +564,27 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recientes
+            Récents
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/06/12/Demo01/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="设计模式-装饰模式">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-12T05:41:42.000Z">2019-06-12</time></div>
+                    <a href="/2019/06/12/Demo01/" class="has-link-black-ter is-size-6">设计模式-装饰模式</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -471,7 +613,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archivos
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -481,7 +623,7 @@
                     <span class="level-item">June 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -495,9 +637,16 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Etiquetas
+                Tags
             </h3>
             <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/设计模式/">
+                        <span class="tag">设计模式</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
                 
             </div>
         </div>
@@ -628,7 +777,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     
 
-<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
+<a id="back-to-top" title="Back to Top" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -674,10 +823,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Entradas',
+                POSTS: 'Articles',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categorias',
-                TAGS: 'Etiquetas',
+                CATEGORIES: 'Catégories',
+                TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
